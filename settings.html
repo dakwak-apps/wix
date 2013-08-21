@@ -19,13 +19,13 @@
                 url: 'https://dakwak.com/api/users/is_wix.json',
                 type: 'POST',
                 dataType: 'json',
-                data: {uid: Wix.Utils.getUid(), apikey: wix_apikey},
+                data: {uid: Wix.Utils.getUid()},
                 success: function(data) {
-                    alert(data.toSource());
+                    //alert(data.toSource());
                 },
 
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(xhr.toSource());
+                    //alert(xhr.toSource());
                 }
             });
 
