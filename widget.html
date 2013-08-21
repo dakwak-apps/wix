@@ -11,7 +11,7 @@
         $(document).ready(function(){
             Wix.getSiteInfo( function(siteInfo) {
                 $.ajax({
-                    url: 'https://f3.f.us.dakwak.com/api/users/is_wix.json',
+                    url: 'https://dakwak.com/api/users/is_wix.json',
                     type: 'POST',
                     dataType: 'json',
                     data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl},
