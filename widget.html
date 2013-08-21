@@ -8,6 +8,8 @@
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
+        var _daq = _daq || [];
+
         $(document).ready(function(){
             var instance = getURLParameter('instance');
 
@@ -19,15 +21,14 @@
                     data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                     success: function(data) {
                         if(typeof data == 'object' && data.website_apikey != '') {
-                            render_dakwak(data.website_apikey);
+                            renderDakwak(data.website_apikey);
 
                         } else {
-                            $('body').hmtl('<h1>You need to set Dakwak app settings.</h1>');
+                            $('body').html('<h1>You need to set Dakwak app settings.</h1>');
                         }
                     },
 
                     error: function (xhr, ajaxOptions, thrownError) {
-
                     }
                 });
             });
@@ -40,8 +41,6 @@
         }
 
         function renderDakwak(apikey) {
-            var _daq = _daq || [];
-
             _daq.push(['_apikey', apikey]);
 
             (function () {
