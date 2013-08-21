@@ -18,7 +18,7 @@
                     dataType: 'json',
                     data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                     success: function(data) {
-                        alert(data);
+                        alert(data.website_apikey);
 
                         if(typeof data == 'object' && data.website_apikey != '') {
                             // user exists
