@@ -18,22 +18,8 @@
                     dataType: 'json',
                     data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                     success: function(data) {
-                        alert(data.website_apikey);
-
                         if(typeof data == 'object' && data.website_apikey != '') {
-                            // user exists
-                            var _daq = _daq || [];
-
-                            _daq.push(['_apikey', data.website_apikey]);
-
-                            (function () {
-                                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-                                g.type = 'text/javascript';
-                                g.async = true;
-                                g.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
-                                s.parentNode.insertBefore(g, s);
-                            })();
-
+                            render_dakwak(data.website_apikey);
 
                         } else {
                             $('body').hmtl('<h1>You need to set Dakwak app settings.</h1>');
@@ -41,7 +27,7 @@
                     },
 
                     error: function (xhr, ajaxOptions, thrownError) {
-                        
+
                     }
                 });
             });
@@ -52,6 +38,21 @@
                     (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
             );
         }
+
+        function renderDakwak(apikey) {
+            var _daq = _daq || [];
+
+            _daq.push(['_apikey', apikey]);
+
+            (function () {
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.type = 'text/javascript';
+                g.async = true;
+                g.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
+                s.parentNode.insertBefore(g, s);
+            })();
+        }
+
     </script>
 </head>
 <body>
