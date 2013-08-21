@@ -61,7 +61,7 @@
                     url: 'https://dakwak.com/api/users/new.json',
                     type: 'POST',
                     dataType: 'json',
-                    data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang},
+                    data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang,  app: 'wix', instance: instance},
                     success: function(data) {
                         alert(data);
                     },
