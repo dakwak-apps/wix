@@ -26,14 +26,13 @@
                         dataType: 'json',
                         data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                         success: function(data) {
-                            alert(data);
-
                             if(typeof data == 'object' && data.apikey != '') {
                                 // user exists
+                                $('#email').val(data.user_email);
                                 $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
 
                             } else {
-                                // new user
+
                             }
                         },
 
