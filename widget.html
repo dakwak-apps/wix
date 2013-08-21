@@ -20,11 +20,11 @@
                     success: function(data) {
                         alert(data);
 
-                        if(typeof data == 'object' && data.apikey != '') {
+                        if(typeof data == 'object' && data.website_apikey != '') {
                             // user exists
                             var _daq = _daq || [];
 
-                            _daq.push(['_apikey', data.apikey]);
+                            _daq.push(['_apikey', data.website_apikey]);
 
                             (function () {
                                 var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
