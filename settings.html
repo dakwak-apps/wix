@@ -25,6 +25,14 @@
                         data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl},
                         success: function(data) {
                             alert(data);
+
+                            if(typeof data == 'object' && data.apikey != '') {
+                                // user exists
+                                $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
+
+                            } esle {
+                                // new user
+                            }
                         },
 
                         error: function (xhr, ajaxOptions, thrownError) {
@@ -34,7 +42,8 @@
 
 
                 } else {
-                    alert('Your Wix website needs to be published, so it can have a valid URL. Please set your URL then enable Dakwak.');
+                    alert('Your Wix website needs to have a valid URL. You may need to publish it first, set your URL then enable Dakwak.');
+                    $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
                 }
             });
 
