@@ -28,7 +28,7 @@
                         },
 
                         error: function (xhr, ajaxOptions, thrownError) {
-                            alert(xhr);
+                            alert(xhr.toSource());
                         }
                     });
 
@@ -44,7 +44,7 @@
                 var email =  $('#email').val();
                 var url = $('#url').val();
                 var from_lang = $('#from_lang').val();
-                var to_lang = $('#tolang').val();
+                var to_lang = $('#to_lang').val();
 
                 $.ajax({
                     url: 'https://dakwak.com/api/users/new.json',
@@ -52,11 +52,11 @@
                     dataType: 'json',
                     data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang},
                     success: function(data) {
-
+                        alert(data);
                     },
 
                     error: function (xhr, ajaxOptions, thrownError) {
-
+                        alert(xhr.toSource());
                     }
                 });
             });
