@@ -13,6 +13,8 @@
     <script type="text/javascript">
         $(document).ready(function(){
 
+            var instance = getURLParameter('instance');
+
             Wix.getSiteInfo( function(siteInfo) {
                 if(siteInfo.baseUrl != '') {
                     $('#url').val(siteInfo.baseUrl);
@@ -22,7 +24,7 @@
                         url: 'https://dakwak.com/api/users/is_wix.json',
                         type: 'POST',
                         dataType: 'json',
-                        data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl},
+                        data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                         success: function(data) {
                             alert(data);
 
@@ -36,7 +38,7 @@
                         },
 
                         error: function (xhr, ajaxOptions, thrownError) {
-                            alert(xhr.toSource());
+
                         }
                     });
 
@@ -72,6 +74,12 @@
                 return false;
             });
         });
+
+        function getURLParameter(name) {
+            return decodeURI(
+                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
 
     </script>
 </head>

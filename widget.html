@@ -9,12 +9,14 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+            var instance = getURLParameter('instance');
+
             Wix.getSiteInfo( function(siteInfo) {
                 $.ajax({
                     url: 'https://dakwak.com/api/users/is_wix.json',
                     type: 'POST',
                     dataType: 'json',
-                    data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl},
+                    data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                     success: function(data) {
                         alert(data);
 
@@ -44,6 +46,12 @@
                 });
             });
         });
+
+        function getURLParameter(name) {
+            return decodeURI(
+                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
     </script>
 </head>
 <body>
