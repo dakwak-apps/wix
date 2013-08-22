@@ -26,7 +26,7 @@
                         dataType: 'json',
                         data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
                         success: function(data) {
-                            if(typeof data == 'object' && data.website_apikey != '') {
+                            if(typeof data.website_apikey != 'undefined') {
                                 // user exists
                                 $('#email').val(data.user_email);
                                 $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
