@@ -21,7 +21,7 @@
                     $('#from_lang').val(Wix.Utils.getLocale());
 
                     $.ajax({
-                        url: 'https://dakwak.com/api/users/is_wix.json',
+                        url: 'http://stage1.us.dakwak.com:8189/api/users/is_wix.json',
                         type: 'POST',
                         dataType: 'json',
                         data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
@@ -57,7 +57,7 @@
                 var to_lang = $('#to_lang').val();
 
                 $.ajax({
-                    url: 'https://dakwak.com/api/users/new.json',
+                    url: 'http://stage1.us.dakwak.com:8189/api/users/new.json',
                     type: 'POST',
                     dataType: 'json',
                     data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang,  app: 'wix', instance: instance},
