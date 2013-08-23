@@ -9,18 +9,79 @@
     <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.16.0/js/Wix.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/dakwak.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
-            dakwak.init();
-            dakwak.refreshSettings();
+
+            var instance = getURLParameter('instance');
+
+            Wix.getSiteInfo( function(siteInfo) {
+                if(siteInfo.baseUrl != '') {
+                    $('#url').val(siteInfo.baseUrl);
+                    $('#from_lang').val(Wix.Utils.getLocale());
+
+                    $.ajax({
+                        url: 'http://stage1.us.dakwak.com:8189/api/users/is_wix.json',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {uid: Wix.Utils.getUid(), url: siteInfo.baseUrl, app: 'wix', instance: instance},
+                        success: function(data) {
+                            if(typeof data.website_apikey != 'undefined') {
+                                // user exists
+                                $('.message').html('<div class="alert alert-success">Dakwak is already activated. Your API key is: ' + data.website_apikey + '</div>');
+                                $('#email').val(data.user_email);
+                                $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
+
+                            } else {
+
+                            }
+                        },
+
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            $('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
+                        }
+                    });
+
+
+                } else {
+                    alert('Your Wix website needs to have a valid URL. You may need to publish it first, set your URL then enable Dakwak.');
+                    $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
+                }
+            });
 
             $('#settings-form').submit(function() {
-                dakwak.newUser();
+
+                var uid = Wix.Utils.getUid();
+                var email =  $('#email').val();
+                var url = $('#url').val();
+                var from_lang = $('#from_lang').val();
+                var to_lang = $('#to_lang').val();
+
+                $.ajax({
+                    url: 'http://stage1.us.dakwak.com:8189/api/users/new.json',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang,  app: 'wix', instance: instance},
+                    success: function(data) {
+                        $('.message').html('<div class="alert alert-success">Thank you! Dakwak should be activated on your website.</div>"');
+                        Wix.Settings.refreshApp();
+                    },
+
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
+                    }
+                });
+
                 return false;
             });
         });
+
+        function getURLParameter(name) {
+            return decodeURI(
+                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
+
     </script>
 </head>
 <body>
@@ -52,7 +113,7 @@
         </select>
     </div>
     <div class="form-group">
-        <input type="submit" name="submit" value="Activate Dakwak" class="btn btn-default btn-success">
+        <input type="submit" name="submit" value="Save settings" class="btn btn-default btn-success">
     </div>
 
 </form>
