@@ -37,7 +37,7 @@
                         },
 
                         error: function (xhr, ajaxOptions, thrownError) {
-                            $.('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
+                            $('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
                         }
                     });
 
@@ -62,12 +62,12 @@
                     dataType: 'json',
                     data: {uid: uid, email: email, url: url, from_lang: from_lang, to_lang: to_lang,  app: 'wix', instance: instance},
                     success: function(data) {
-                        $.('.message').html('<div class="alert alert-success">Thank you! Dakwak should be activated on your website.</div>"');
+                        $('.message').html('<div class="alert alert-success">Thank you! Dakwak should be activated on your website.</div>"');
                         Wix.Settings.refreshApp();
                     },
 
                     error: function (xhr, ajaxOptions, thrownError) {
-                        $.('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
+                        $('.message').html('<div class="alert alert-error">' + xhr.reponseText + '</div>"');
                     }
                 });
 
