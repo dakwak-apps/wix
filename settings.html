@@ -28,11 +28,12 @@
                         success: function(data) {
                             if(typeof data.website_apikey != 'undefined') {
                                 // user exists
+                                $('.message').html('<div class="alert alert-success">Dakwak is already activated. Your API key is: ' + data.website_apikey + '</div>');
                                 $('#email').val(data.user_email);
                                 $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
 
                             } else {
-                                $('.message').html('<div class="alert alert-success">Dakwak is already activated. Your API key is: ' + data.website_apikey + '</div>');
+
                             }
                         },
 
