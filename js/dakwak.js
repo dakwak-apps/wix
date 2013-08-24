@@ -69,11 +69,11 @@ var Dakwak = function() {
     }
 
     this.renderWidget = function() {
-
-        alert('api2: ' + this.website_apikey);
-
         if(this.website_apikey != '') {
             $('body').html('');
+
+
+            alert('api2: ' + this.website_apikey);
 
             var _daq = _daq || [];
 
