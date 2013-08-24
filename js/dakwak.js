@@ -42,6 +42,7 @@ var Dakwak = function() {
                 url: t.api + 'is_wix.json',
                 type: 'POST',
                 dataType: 'json',
+                async: false,
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
                 success: function(data) {
                     if(data.exists == true) {
