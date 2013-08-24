@@ -70,17 +70,13 @@ var Dakwak = function() {
         if(this.website_apikey != '') {
             $('body').html('');
 
-            alert(typeof _daq);
-
             _daq.push(['_apikey', this.website_apikey ]);
 
-            (function () {
-                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-                g.type = 'text/javascript';
-                g.async = true;
-                g.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
-                s.parentNode.insertBefore(g, s);
-            })();
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
+            s.parentNode.insertBefore(g, s);
         }
     }
 
