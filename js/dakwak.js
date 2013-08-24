@@ -66,6 +66,10 @@ var Dakwak = function() {
         if(this.website_apikey != '') {
             $('body').html('');
 
+            var _daq = _daq || [];
+
+            console.log( this.website_apikey);
+
             _daq.push(['_apikey', this.website_apikey ]);
 
             (function () {
