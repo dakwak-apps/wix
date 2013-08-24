@@ -51,8 +51,8 @@ var Dakwak = function() {
 
                         t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
                     }
-                    
-                    this.refreshSettings();
+
+                    t.refreshSettings();
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     t.message(textStatus + ' : ' +  xhr.responseText, 'error');
