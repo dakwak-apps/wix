@@ -13,13 +13,13 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            var dakwak = new Dakwak();
+            var dakwakWix = new DakwakWix();
 
-            dakwak.init('settings');
-            dakwak.refreshSettings();
+            dakwakWix.init('settings');
+            dakwakWix.refreshSettings();
 
             $('#settings-form').submit(function() {
-                dakwak.newUser();
+                dakwakWix.newUser();
                 return false;
             });
         });
