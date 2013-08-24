@@ -48,7 +48,7 @@ var Dakwak = function() {
                     if(data.exists == true) {
                         t.userExists = true;
                         t.website_apikey = data.website_apikey;
-                        alert('api1: ' + this.website_apikey);
+                        alert('api1: ' + t.website_apikey);
 
                         t.email = data.user_email;
 
