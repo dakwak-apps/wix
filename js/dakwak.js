@@ -63,7 +63,7 @@ var Dakwak = function() {
     }
 
     this.renderWidget = function() {
-        console.log('api: ' + this.website_apikey);
+        alert('api: ' + this.website_apikey);
 
         if(this.website_apikey != '') {
             $('body').html('');
