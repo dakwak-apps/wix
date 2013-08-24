@@ -39,7 +39,7 @@ var Dakwak = function() {
             t.lang_from = Wix.Utils.getLocale();
 
             $.ajax({
-                url: t.api + '/is_wix.json',
+                url: t.api + 'is_wix.json',
                 type: 'POST',
                 dataType: 'json',
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
@@ -97,7 +97,7 @@ var Dakwak = function() {
         var t = this;
         
         $.ajax({
-            url: t.api + '/new.json',
+            url: t.api + 'new.json',
             type: 'POST',
             dataType: 'json',
             data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
