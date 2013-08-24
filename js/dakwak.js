@@ -9,7 +9,7 @@
  *
  */
 
-var dakwak = function() {
+var Dakwak = function() {
 
     this.domain = 'http://stage1.us.dakwak.com:8189/';
 
