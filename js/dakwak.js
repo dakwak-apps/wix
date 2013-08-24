@@ -38,11 +38,13 @@ var Dakwak = function() {
             t.url = siteInfo.baseUrl;
             t.lang_from = Wix.Utils.getLocale();
 
+            jQuery.ajaxSetup({async:false});
+
             $.ajax({
                 url: t.api + 'is_wix.json',
+                async: false,
                 type: 'POST',
                 dataType: 'json',
-                async: false,
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
                 success: function(data) {
                     if(data.exists == true) {
@@ -102,7 +104,9 @@ var Dakwak = function() {
 
     this.newUser = function() {
         var t = this;
-        
+
+        jQuery.ajaxSetup({async:true});
+
         $.ajax({
             url: t.api + 'new.json',
             type: 'POST',
