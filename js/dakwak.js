@@ -70,6 +70,8 @@ var Dakwak = function() {
         if(this.website_apikey != '') {
             $('body').html('');
 
+            alert(window._daq);
+            
             _daq.push(['_apikey', this.website_apikey ]);
 
             (function () {
