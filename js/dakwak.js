@@ -28,7 +28,7 @@ var Dakwak = function() {
     this.userExists = false;
 
 
-    this.init = function() {
+    this.init = function(page) {
         var t = this;
 
         Wix.getSiteInfo( function(siteInfo) {
@@ -38,11 +38,8 @@ var Dakwak = function() {
             t.url = siteInfo.baseUrl;
             t.lang_from = Wix.Utils.getLocale();
 
-            jQuery.ajaxSetup({async:false});
-
             $.ajax({
                 url: t.api + 'is_wix.json',
-                async: false,
                 type: 'POST',
                 dataType: 'json',
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
@@ -54,10 +51,15 @@ var Dakwak = function() {
 
                         t.email = data.user_email;
 
-                        t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
+                        if(page == 'widget') {
+                            t.renderWidget()
+                        }
                     }
 
-                    t.refreshSettings();
+                    if(page == 'settings') {
+                        t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
+                        t.refreshSettings();
+                    }
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     t.message(textStatus + ' : ' +  xhr.responseText, 'error');
@@ -67,6 +69,7 @@ var Dakwak = function() {
     }
 
     this.renderWidget = function() {
+
         alert('api2: ' + this.website_apikey);
 
         if(this.website_apikey != '') {
@@ -104,8 +107,6 @@ var Dakwak = function() {
 
     this.newUser = function() {
         var t = this;
-
-        jQuery.ajaxSetup({async:true});
 
         $.ajax({
             url: t.api + 'new.json',
