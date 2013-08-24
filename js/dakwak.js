@@ -23,8 +23,8 @@ var DakwakWix = function() {
     this.uid = '';
     this.email = '';
     this.url = '';
-    this.lang_from = '';
-    this.lang_to = '';
+    this.from_lang = '';
+    this.to_lang = '';
     this.userExists = false;
 
 
@@ -36,7 +36,7 @@ var DakwakWix = function() {
             t.instance = t.getURLParameter('instance');
             t.uid = Wix.Utils.getUid();
             t.url = siteInfo.baseUrl;
-            t.lang_from = Wix.Utils.getLocale();
+            t.from_lang = Wix.Utils.getLocale();
 
             $.ajax({
                 url: t.api + 'is_wix.json',
@@ -50,7 +50,7 @@ var DakwakWix = function() {
                         t.email = data.user_email;
 
                         if(page == 'widget') {
-                            t.renderWidget(); 
+                            t.renderWidget();
                         }
                     }
 
@@ -85,8 +85,8 @@ var DakwakWix = function() {
 
         $('#email').val(this.email);
         $('#url').val(this.url);
-        $('#lang_from').val(this.lang_from);
-        $('#lang_to').val(this.lang_to);
+        $('#from_lang').val(this.from_lang);
+        $('#to_lang').val(this.to_lang);
 
         if(this.userExists ==  true) {
             $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
