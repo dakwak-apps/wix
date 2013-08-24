@@ -41,7 +41,6 @@ var Dakwak = function() {
             $.ajax({
                 url: t.api + '/is_wix.json',
                 type: 'POST',
-                async: false,
                 dataType: 'json',
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
                 success: function(data) {
@@ -52,6 +51,8 @@ var Dakwak = function() {
 
                         t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
                     }
+                    
+                    this.refreshSettings();
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     t.message(textStatus + ' : ' +  xhr.responseText, 'error');
@@ -94,19 +95,21 @@ var Dakwak = function() {
     }
 
     this.newUser = function() {
+        var t = this;
+        
         $.ajax({
-            url: this.api + '/new.json',
+            url: t.api + '/new.json',
             type: 'POST',
             dataType: 'json',
-            data: {uid: this.uid, email: this.email, url: this.url, from_lang: this.from_lang, to_lang: this.to_lang,  app: this.app, instance: this.instance},
+            data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
             success: function(data) {
-                this.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.website_apikey, 'success');
-                this.refreshSettings();
+                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.website_apikey, 'success');
+                t.refreshSettings();
                 Wix.Settings.refreshApp();
             },
 
             error: function(xhr, textStatus, errorThrown) {
-                this.message(textStatus + ' : ' +  xhr.responseText, 'error');
+                t.message(textStatus + ' : ' +  xhr.responseText, 'error');
             }
         });
     }
