@@ -65,8 +65,7 @@ var Dakwak = function() {
         if(this.website_apikey != '') {
             $('body').html('');
 
-            window._daq = window._daq || [];
-            window._daq.push(['_apikey', this.website_apikey ]);
+            _daq.push(['_apikey', this.website_apikey ]);
 
             (function () {
                 var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
