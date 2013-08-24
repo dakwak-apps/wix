@@ -63,12 +63,12 @@ var Dakwak = function() {
     }
 
     this.renderWidget = function() {
+        console.log('api: ' + this.website_apikey);
+
         if(this.website_apikey != '') {
             $('body').html('');
 
             var _daq = _daq || [];
-
-            console.log( this.website_apikey);
 
             _daq.push(['_apikey', this.website_apikey ]);
 
