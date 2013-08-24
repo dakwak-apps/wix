@@ -47,8 +47,6 @@ var Dakwak = function() {
                     if(data.exists == true) {
                         t.userExists = true;
                         t.website_apikey = data.website_apikey;
-                        alert('api1: ' + t.website_apikey);
-
                         t.email = data.user_email;
 
                         if(page == 'widget') {
@@ -71,11 +69,6 @@ var Dakwak = function() {
     this.renderWidget = function() {
         if(this.website_apikey != '') {
             $('body').html('');
-
-
-            alert('api2: ' + this.website_apikey);
-
-            var _daq = _daq || [];
 
             _daq.push(['_apikey', this.website_apikey ]);
 
