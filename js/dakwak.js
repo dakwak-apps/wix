@@ -29,31 +29,32 @@ var Dakwak = function() {
 
 
     this.init = function() {
+        var t = this;
 
         Wix.getSiteInfo( function(siteInfo) {
 
-            this.instance = this.getURLParameter('instance');
-            this.uid = Wix.Utils.getUid();
-            this.url = siteInfo.baseUrl;
-            this.lang_from = Wix.Utils.getLocale();
+            t.instance = t.getURLParameter('instance');
+            t.uid = Wix.Utils.getUid();
+            t.url = siteInfo.baseUrl;
+            t.lang_from = Wix.Utils.getLocale();
 
             $.ajax({
-                url: this.api + '/is_wix.json',
+                url: t.api + '/is_wix.json',
                 type: 'POST',
                 async: false,
                 dataType: 'json',
-                data: {uid: this.uid, url: this.url, app: this.app, instance: this.instance},
+                data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
                 success: function(data) {
                     if(data.exists == true) {
-                        this.userExists = true;
-                        this.website_apikey = data.website_apikey;
-                        this.email = data.user_email;
+                        t.userExists = true;
+                        t.website_apikey = data.website_apikey;
+                        t.email = data.user_email;
 
-                        this.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
+                        t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
                     }
                 },
                 error: function(xhr, textStatus, errorThrown) {
-                    this.message(textStatus + ' : ' +  xhr.responseText, 'error');
+                    t.message(textStatus + ' : ' +  xhr.responseText, 'error');
                 }
             });
         });
