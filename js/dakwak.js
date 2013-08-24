@@ -50,7 +50,7 @@ var DakwakWix = function() {
                         t.email = data.user_email;
 
                         if(page == 'widget') {
-                            t.renderWidget()
+                            t.renderWidget(); 
                         }
                     }
 
