@@ -48,6 +48,8 @@ var Dakwak = function() {
                     if(data.exists == true) {
                         t.userExists = true;
                         t.website_apikey = data.website_apikey;
+                        alert('api1: ' + this.website_apikey);
+
                         t.email = data.user_email;
 
                         t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
@@ -63,7 +65,7 @@ var Dakwak = function() {
     }
 
     this.renderWidget = function() {
-        alert('api: ' + this.website_apikey);
+        alert('api2: ' + this.website_apikey);
 
         if(this.website_apikey != '') {
             $('body').html('');
