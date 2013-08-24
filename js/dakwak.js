@@ -71,7 +71,7 @@ var Dakwak = function() {
             $('body').html('');
 
             alert(window._daq);
-            
+
             _daq.push(['_apikey', this.website_apikey ]);
 
             (function () {
