@@ -39,7 +39,7 @@ var DakwakWix = function() {
             t.from_lang = Wix.Utils.getLocale();
 
             if(!t.url) {
-                this.message('Your Wix website needs to have a valid URL. You may need to publish it first, set your URL then enable Dakwak.', 'error');
+                t.message('Your Wix website needs to have a valid URL. You may need to publish it first, set your URL then enable Dakwak.', 'error');
                 t.refreshSettings();
                 return;
             }
