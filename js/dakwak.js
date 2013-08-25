@@ -38,6 +38,12 @@ var DakwakWix = function() {
             t.url = siteInfo.baseUrl;
             t.from_lang = Wix.Utils.getLocale();
 
+            if(!t.url) {
+                this.message('Your Wix website needs to have a valid URL. You may need to publish it first, set your URL then enable Dakwak.', 'error');
+                t.refreshSettings();
+                return;
+            }
+
             $.ajax({
                 url: t.api + 'is_wix.json',
                 type: 'POST',
@@ -88,7 +94,7 @@ var DakwakWix = function() {
         $('#from_lang').val(this.from_lang);
         $('#to_lang').val(this.to_lang);
 
-        if(this.userExists ==  true) {
+        if(this.userExists ==  true || !this.url) {
             $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
         }
     }
