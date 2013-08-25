@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Widget Endpoint</title>
-    <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+
     <script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.16.0/js/Wix.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -18,8 +19,22 @@
             dakwakWix.init('widget');
         });
     </script>
+
+    <style type="text/css>">
+        .alert-warning {
+            background-color: #FCF8E3;
+            border-color: #FBEED5;
+            color: #C09853;
+        }
+        .alert {
+            border: 1px solid transparent;
+            border-radius: 4px 4px 4px 4px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-<div class="alert alert-information">Dakwak should be loaded shortly. Once it's activated in the settings.</div>
+<div class="alert alert-warning">Dakwak should be loaded shortly. Once it's activated in the settings.</div>
 </body>
 </html>
