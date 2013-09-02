@@ -108,7 +108,9 @@ var DakwakWix = function() {
 
     this.newUser = function() {
         var t = this;
+        t.url = $('#url').val();
         t.email = $('#email').val();
+        t.to_lang = $('#to_lang').val();
 
         $.ajax({
             url: t.api + 'new.json',
