@@ -61,6 +61,7 @@ var DakwakWix = function() {
 
                         if(page == 'settings') {
                             t.message('Dakwak is already activated. Your API key is: ' + t.website_apikey, 'success');
+                            t.refreshSettings();
                         }
                     } else {
                         if(page == 'settings') {
