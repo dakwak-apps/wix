@@ -118,7 +118,7 @@ var DakwakWix = function() {
             dataType: 'json',
             data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
             success: function(data) {
-                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.website_apikey, 'success');
+                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.apikey, 'success');
                 t.refreshSettings();
                 Wix.Settings.refreshApp();
             },
