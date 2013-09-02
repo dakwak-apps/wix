@@ -27,6 +27,8 @@ var DakwakWix = function() {
     this.to_lang = '';
     this.userExists = false;
 
+    this.widget = this.domain + 'api/websites/' + this.website_apikey + '/widget';
+
 
     this.init = function(page) {
         var t = this;
@@ -98,7 +100,7 @@ var DakwakWix = function() {
             */
 
             $.ajax({
-                url: t.domain + 'api/websites/' + t.website_apikey + '/widget',
+                url: t.widget,
                 type: 'GET',
                 success: function(data) {
                     $('body').html(data);
@@ -141,7 +143,8 @@ var DakwakWix = function() {
             dataType: 'json',
             data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
             success: function(data) {
-                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.website_apikey, 'success');
+                t.website_apikey = data.website_apikey;
+                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + t.website_apikey, 'success');
                 t.refreshSettings();
                 Wix.Settings.refreshApp();
             },
