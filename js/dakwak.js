@@ -52,6 +52,7 @@ var DakwakWix = function() {
                 success: function(data) {
                     if(data.exists == true) {
                         t.userExists = true;
+                        t.url = data.website_slug;
                         t.website_apikey = data.website_apikey;
                         t.email = data.user_email;
 
