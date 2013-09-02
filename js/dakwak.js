@@ -52,9 +52,11 @@ var DakwakWix = function() {
                 success: function(data) {
                     if(data.exists == true) {
                         t.userExists = true;
-                        t.url = data.website_slug;
+                        t.url = 'http://' + data.website_slug;
                         t.website_apikey = data.website_apikey;
                         t.email = data.user_email;
+                        t.to_lang = data.to_lang;
+                        t.from_lang = data.from_lang;
 
                         if(page == 'widget') {
                             t.renderWidget();
@@ -110,9 +112,10 @@ var DakwakWix = function() {
 
     this.newUser = function() {
         var t = this;
-        t.url = $('#url').val();
         t.email = $('#email').val();
+        t.from_lang = $('#from_lang').val();
         t.to_lang = $('#to_lang').val();
+        t.url = $('#url').val();
 
         $.ajax({
             url: t.api + 'new.json',
@@ -120,7 +123,7 @@ var DakwakWix = function() {
             dataType: 'json',
             data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
             success: function(data) {
-                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.apikey, 'success');
+                t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + data.website_apikey, 'success');
                 t.refreshSettings();
                 Wix.Settings.refreshApp();
             },
