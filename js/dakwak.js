@@ -80,16 +80,34 @@ var DakwakWix = function() {
     }
 
     this.renderWidget = function() {
-        if(this.website_apikey != '') {
-            $('body').html('');
+        t = this;
 
-            _daq.push(['_apikey', this.website_apikey ]);
+        if(t.website_apikey != '') {
+            /*** script widget
 
-            var script = document.createElement( 'script' );
-            script.type = 'text/javascript';
-            script.async = true;
-            script.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
-            $("head").prepend( script );
+                $('body').html('');
+
+                _daq.push(['_apikey', this.website_apikey ]);
+
+                var script = document.createElement( 'script' );
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src = document.location.protocol + '//c682891.r91.cf2.rackcdn.com/dakwakdevelopment.js';
+                $("head").prepend( script );
+
+            */
+
+            $.ajax({
+                url: t.domain + '/api/websites/' + t.website_apikey + '/widget',
+                type: 'POST',
+                success: function(data) {
+                    $('body').html(data);
+                },
+
+                error: function(xhr, textStatus, errorThrown) {
+                    $('body').html(textStatus + ' : ' +  xhr.responseText, 'error');
+                }
+            });
 
         }
     }
