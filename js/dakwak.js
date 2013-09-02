@@ -50,7 +50,7 @@ var DakwakWix = function() {
                 dataType: 'json',
                 data: {uid: t.uid, url: t.url, app: t.app, instance: t.instance},
                 success: function(data) {
-                    if(data.exists == true) {
+                    if(data.exists == 'true') {
                         t.userExists = true;
                         t.website_apikey = data.website_apikey;
                         t.email = data.user_email;
