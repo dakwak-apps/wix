@@ -99,7 +99,7 @@ var DakwakWix = function() {
 
             $.ajax({
                 url: t.domain + 'api/websites/' + t.website_apikey + '/widget',
-                type: 'POST',
+                type: 'GET',
                 success: function(data) {
                     $('body').html(data);
                 },
