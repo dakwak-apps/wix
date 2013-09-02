@@ -60,7 +60,7 @@ var DakwakWix = function() {
                         }
 
                         if(page == 'settings') {
-                            t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
+                            t.message('Dakwak is already activated. Your API key is: ' + t.website_apikey, 'success');
                         }
                     } else {
                         if(page == 'settings') {
