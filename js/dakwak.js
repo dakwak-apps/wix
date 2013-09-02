@@ -27,7 +27,9 @@ var DakwakWix = function() {
     this.to_lang = '';
     this.userExists = false;
 
-    this.widget = this.domain + 'api/websites/' + this.website_apikey + '/widget';
+    this.widgetURL = function() {
+        return this.domain + 'api/websites/' + this.website_apikey + '/widget';
+    }
 
 
     this.init = function(page) {
@@ -100,7 +102,7 @@ var DakwakWix = function() {
             */
 
             $.ajax({
-                url: t.widget,
+                url: t.widgetURL(),
                 type: 'GET',
                 success: function(data) {
                     $('body').html(data);
