@@ -58,11 +58,14 @@ var DakwakWix = function() {
                         if(page == 'widget') {
                             t.renderWidget();
                         }
-                    }
 
-                    if(page == 'settings') {
-                        t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
-                        t.refreshSettings();
+                        if(page == 'settings') {
+                            t.message('Dakwak is already activated. Your API key is: ' + data.website_apikey, 'success');
+                        }
+                    } else {
+                        if(page == 'settings') {
+                            t.refreshSettings();
+                        }
                     }
                 },
                 error: function(xhr, textStatus, errorThrown) {
@@ -105,6 +108,7 @@ var DakwakWix = function() {
 
     this.newUser = function() {
         var t = this;
+        t.email = $('#email').val();
 
         $.ajax({
             url: t.api + 'new.json',
