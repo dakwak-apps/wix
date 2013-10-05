@@ -123,8 +123,13 @@ var DakwakWix = function() {
         $('#from_lang').val(this.from_lang);
         $('#to_lang').val(this.to_lang);
 
-        if(this.userExists ==  true || !this.url) {
+        if(!this.url) {
             $('#settings-form input, #settings-form select').attr('disabled', 'disabled');
+        }
+
+        if(this.userExists ==  true) {
+            $('#settings-form input#submit').val('Update Settings');
+            $('#settings-form input#email').attr('disabled', 'disabled');
         }
     }
 
@@ -147,6 +152,29 @@ var DakwakWix = function() {
             success: function(data) {
                 t.website_apikey = data.website_apikey;
                 t.message('Thank you! Dakwak should be activated on your website. Your API key is: ' + t.website_apikey, 'success');
+                t.refreshSettings();
+                Wix.Settings.refreshApp();
+            },
+
+            error: function(xhr, textStatus, errorThrown) {
+                t.message(textStatus + ' : ' +  xhr.responseText, 'error');
+            }
+        });
+    }
+
+    this.updateUserSettings = function() {
+        var t = this;
+        t.from_lang = $('#from_lang').val();
+        t.to_lang = $('#to_lang').val();
+        t.url = $('#url').val();
+
+        $.ajax({
+            url: t.api + 'websites/' + t.website_apikey + '.json',
+            type: 'POST',
+            dataType: 'json',
+            data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
+            success: function(data) {
+                t.message('Settings updated', 'success');
                 t.refreshSettings();
                 Wix.Settings.refreshApp();
             },
