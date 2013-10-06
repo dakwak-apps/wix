@@ -169,7 +169,7 @@ var DakwakWix = function() {
         t.url = $('#url').val();
 
         $.ajax({
-            url: t.api + 'websites/' + t.website_apikey + '.json',
+            url: t.domain + 'websites/' + t.website_apikey + '.json',
             type: 'POST',
             dataType: 'json',
             data: {uid: t.uid, email: t.email, url: t.url, from_lang: t.from_lang, to_lang: t.to_lang,  app: t.app, instance: t.instance},
