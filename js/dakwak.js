@@ -11,7 +11,7 @@
 
 var DakwakWix = function() {
 
-    this.domain = 'http://stage1.us.dakwak.com:8189/';
+    this.domain = 'http://widget.dakwak.com/';
 
     this.api = this.domain + 'api/users/';
 
