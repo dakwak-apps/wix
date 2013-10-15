@@ -16,7 +16,7 @@ body {
   float: left;
 }
 .intro .title .divider {
-  height: 30px;
+  height: 86px;
   width: 1px;
   background: #ccc;
   margin: 24px 24px 24px 0;
@@ -29,8 +29,8 @@ body {
 .intro .icon {
   position: relative;
   margin: 24px;
-  width: 132px;
-  height: 28px;
+  width: 60px;
+  height: 60px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
@@ -41,7 +41,7 @@ body {
   border-radius: 15px;
   height: 100%;
   width: 100%;
-  background: url('../../images/logo.png') center;
+  background: url('../../images/dakwak_icon.png') center;
 }
 .intro .icon .gloss {
   position: absolute;
