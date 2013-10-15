@@ -77,7 +77,7 @@ var DakwakWix = function() {
                     }
                 },
                 error: function(xhr, textStatus, errorThrown) {
-                    var errorResponse = xhr.responseText;
+                    var errorResponse = jQuery.parseJSON(xhr.responseText);
                     var error = errorResponse.error || errorResponse;
 
                     t.message(textStatus + ' : ' +  error, 'error');
@@ -160,7 +160,7 @@ var DakwakWix = function() {
             },
 
             error: function(xhr, textStatus, errorThrown) {
-                var errorResponse = xhr.responseText;
+                var errorResponse = jQuery.parseJSON(xhr.responseText);
                 var error = errorResponse.error || errorResponse;
 
                 t.message(textStatus + ' : ' +  error, 'error');
@@ -186,7 +186,7 @@ var DakwakWix = function() {
             },
 
             error: function(xhr, textStatus, errorThrown) {
-                var errorResponse = xhr.responseText;
+                var errorResponse = jQuery.parseJSON(xhr.responseText);
                 var error = errorResponse.error || errorResponse;
 
                 t.message(textStatus + ' : ' +  error, 'error');
