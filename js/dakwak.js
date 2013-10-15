@@ -77,7 +77,10 @@ var DakwakWix = function() {
                     }
                 },
                 error: function(xhr, textStatus, errorThrown) {
-                    t.message(textStatus + ' : ' +  xhr.responseText, 'error');
+                    var errorResponse = eval(xhr.responseText);
+                    var error = errorResponse.error || errorResponse;
+
+                    t.message(textStatus + ' : ' +  error, 'error');
                 }
             });
         });
@@ -157,7 +160,10 @@ var DakwakWix = function() {
             },
 
             error: function(xhr, textStatus, errorThrown) {
-                t.message(textStatus + ' : ' +  xhr.responseText, 'error');
+                var errorResponse = eval(xhr.responseText);
+                var error = errorResponse.error || errorResponse;
+
+                t.message(textStatus + ' : ' +  error, 'error');
             }
         });
     }
@@ -180,7 +186,10 @@ var DakwakWix = function() {
             },
 
             error: function(xhr, textStatus, errorThrown) {
-                t.message(textStatus + ' : ' +  xhr.responseText, 'error');
+                var errorResponse = eval(xhr.responseText);
+                var error = errorResponse.error || errorResponse;
+
+                t.message(textStatus + ' : ' +  error, 'error');
             }
         });
     }
